@@ -29,20 +29,20 @@ document.querySelectorAll('.counter').forEach((c) => {
         {
             el: document.getElementById('hero-canvas'),
             count: 30,
-            color: 'rgba(135, 236, 169, 0.45)', // ヒーロー内は明るく鮮烈なライムグリーン
-            speedMin: 1.5, // 最低速度
-            speedMax: 4.5, // 最高速度
-            lengthMin: 300, // 線の長さ（最小）
-            lengthMax: 700, // 線の長さ（最大）
+            color: 'rgba(135, 236, 169, 0.45)', // 動画の後ろで鮮やかに光るライムグリーン
+            speedMin: 1.5,                      
+            speedMax: 4.5,                      
+            lengthMin: 300,                     
+            lengthMax: 700,                     
         },
         {
             el: document.getElementById('bg-canvas'),
             count: 35,
-            color: 'rgba(11, 148, 84, 0.35)', // メイン背景ははっきりとしたフォレストグリーン
-            speedMin: 2.0, // 最低速度
-            speedMax: 5.5, // 最高速度
-            lengthMin: 500, // 画面を跨ぐダイナミックな長さ
-            lengthMax: 1200, // 最大1200pxの長い線
+            color: 'rgba(11, 148, 84, 0.35)',   
+            speedMin: 2.0,                      
+            speedMax: 5.5,                      
+            lengthMin: 500,                     
+            lengthMax: 1200,                    
             diagonal: true,
         },
     ];
@@ -54,7 +54,6 @@ document.querySelectorAll('.counter').forEach((c) => {
         if (!c) return;
         const ctx = c.getContext('2d');
 
-        // デバイスの画面サイズに合わせて描画エリアをリサイズする関数
         const resize = () => {
             c.width = c.clientWidth || window.innerWidth;
             c.height = c.clientHeight || window.innerHeight;
@@ -68,7 +67,7 @@ document.querySelectorAll('.counter').forEach((c) => {
             const speed = cfg.speedMin + Math.random() * (cfg.speedMax - cfg.speedMin);
             const length = cfg.lengthMin + Math.random() * (cfg.lengthMax - cfg.lengthMin);
             if (cfg.diagonal) {
-                const angle = (Math.random() * 2 - 1) * (Math.PI / 5);
+                const angle = (Math.random() * 2 - 1) * (Math.PI / 5); 
                 const vx = Math.cos(angle) * speed;
                 const vy = Math.sin(angle) * speed;
                 lines.push({
@@ -100,21 +99,19 @@ document.querySelectorAll('.counter').forEach((c) => {
             lines.forEach((line) => {
                 ctx.beginPath();
                 ctx.strokeStyle = cfg.color;
-                ctx.lineWidth = 2; // 太めのくっきりとした線を描画
-
+                ctx.lineWidth = 2; 
+                
                 if (line.vx !== undefined && line.vy !== undefined) {
-                    // 斜めラインの描画
                     ctx.moveTo(line.x, line.y);
                     ctx.lineTo(
                         line.x + Math.cos(line.angle) * line.length,
-                        line.y + Math.sin(line.angle) * line.length,
+                        line.y + Math.sin(line.angle) * line.length
                     );
                     ctx.stroke();
-
+                    
                     line.x += line.vx;
                     line.y += line.vy;
-
-                    // 画面外（リセット）判定を縦長・横長両方に対応
+                    
                     if (
                         line.x > c.width + line.length ||
                         line.y > c.height + line.length ||
@@ -124,11 +121,10 @@ document.querySelectorAll('.counter').forEach((c) => {
                         line.y = Math.random() * c.height;
                     }
                 } else {
-                    // 水平ラインの描画
                     ctx.moveTo(line.x, line.y);
                     ctx.lineTo(line.x + line.length, line.y);
                     ctx.stroke();
-
+                    
                     line.x += line.speed;
                     if (line.x > c.width) {
                         line.x = -line.length;
@@ -179,7 +175,6 @@ document.querySelectorAll('.counter').forEach((c) => {
 
     tryPlay();
 
-    // タッチデバイス・スマートフォン制限を解除するためのリスナー
     ['click', 'touchstart'].forEach((ev) => {
         window.addEventListener(ev, tryPlay, { once: true });
     });
