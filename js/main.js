@@ -23,13 +23,106 @@ document.querySelectorAll(".counter").forEach((c) => {
   run();
 });
 
+// --- 導入事例 (WORKS) 自動スクロール ＆ 手動加減速ハイブリッドシステム ---
+(() => {
+  const slider = document.getElementById("works-slider");
+  const track = document.getElementById("works-track");
+  if (!slider || !track) return;
+
+  // シームレスな無限ループ用にカード群を複製
+  const items = Array.from(track.children);
+  items.forEach((item) => {
+    const clone = item.cloneNode(true);
+    track.appendChild(clone);
+  });
+
+  let currentX = 0; // 現在の横スクロール位置
+  let isDragging = false; // ドラッグ中フラグ
+  let startX = 0; // ドラッグ開始時のマウス/タッチX座標
+  let dragStartX = 0; // ドラッグ開始時のスライダー位置
+  const autoSpeed = 0.8; // 自動スクロールの速度（じわじわ動く速度。値を大きくすると速くなります）
+
+  // 各カードの幅＋Gapを含んだ「本来の1セット分の全体の長さ」を計算
+  function getHalfWidth() {
+    const card = track.querySelector(".work-card");
+    if (!card) return 0;
+    const style = window.getComputedStyle(track);
+    const gap = parseInt(style.gap) || 30;
+    return (card.offsetWidth + gap) * items.length;
+  }
+
+  // メインのループ処理（毎フレーム実行）
+  function updateScroll() {
+    const halfWidth = getHalfWidth();
+
+    if (!isDragging && halfWidth > 0) {
+      // 手動ドラッグ中でない時は、自動でじわじわ左へ進める
+      currentX -= autoSpeed;
+
+      // 半分（1セット分）進みきったら、位置を最初に戻して無限ループ
+      if (currentX <= -halfWidth) {
+        currentX += halfWidth;
+      }
+    }
+
+    // 逆方向に手動ドラッグされて、先頭より右側にあふれそうになった場合のループ処理
+    if (currentX > 0 && halfWidth > 0) {
+      currentX -= halfWidth;
+    }
+
+    // トラック要素に位置を反映
+    track.style.transform = `translateX(${currentX}px)`;
+    requestAnimationFrame(updateScroll);
+  }
+
+  // --- マウス/タッチのイベント処理群 ---
+
+  // ドラッグ開始処理
+  const dragStart = (x) => {
+    isDragging = true;
+    startX = x;
+    dragStartX = currentX;
+  };
+
+  // ドラッグ中処理（手動による加減速・巻き戻し）
+  const dragMove = (x) => {
+    if (!isDragging) return;
+    const deltaX = x - startX;
+    currentX = dragStartX + deltaX; // マウスの移動量に応じて位置をリアルタイムに加減速
+  };
+
+  // ドラッグ終了処理
+  const dragEnd = () => {
+    isDragging = false;
+  };
+
+  // マウスイベントの登録
+  slider.addEventListener("mousedown", (e) => dragStart(e.clientX));
+  window.addEventListener("mousemove", (e) => dragMove(e.clientX));
+  window.addEventListener("mouseup", dragEnd);
+
+  // スマートフォン向けタッチイベントの登録
+  slider.addEventListener(
+    "touchstart",
+    (e) => dragStart(e.touches[0].clientX),
+    { passive: true },
+  );
+  window.addEventListener("touchmove", (e) => dragMove(e.touches[0].clientX), {
+    passive: true,
+  });
+  window.addEventListener("touchend", dragEnd);
+
+  // アニメーションループ開始
+  requestAnimationFrame(updateScroll);
+})();
+
 // --- 複数キャンバス対応の線アニメーション (高速・巨大化・高輝度版) ---
 (() => {
   const configs = [
     {
       el: document.getElementById("hero-canvas"),
       count: 30,
-      color: "rgba(135, 236, 169, 0.45)", // 動画の後ろで鮮やかに光るライムグリーン
+      color: "rgba(135, 236, 169, 0.45)",
       speedMin: 1.5,
       speedMax: 4.5,
       lengthMin: 300,

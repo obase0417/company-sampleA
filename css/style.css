@@ -143,7 +143,7 @@ body {
 }
 
 /* ==========================================================================
-   Hero Section (Z-index Layer Fixes)
+   Hero Section
    ========================================================================== */
 .hero {
   position: relative;
@@ -275,7 +275,7 @@ body {
 }
 
 /* ==========================================================================
-   Section Title Common Style (タイトルセンター指定対応)
+   Section Title Common Style
    ========================================================================== */
 .section-title-wrap {
   margin-bottom: 50px;
@@ -367,16 +367,33 @@ h2 {
 }
 
 /* ==========================================================================
-   Works Grid Section
+   Works Hybrid Slider (自動ゆっくり移動 ＆ 手動ドラッグ・フリック可能)
    ========================================================================== */
 .works {
   padding: 100px 0;
 }
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.works-hybrid-slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0 40px;
+  cursor: grab; /* 掴めるようなカーソル表示 */
+  user-select: none; /* ドラッグ中に文字選択が起きないように保護 */
+  -webkit-user-select: none;
 }
+.works-hybrid-slider:active {
+  cursor: grabbing; /* ドラッグ中のカーソル */
+}
+
+.works-slider-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  will-change: transform;
+  /* JSで滑らかに動かすため、手動操作時以外はブレをなくす設定 */
+}
+
 .work-card {
   background: #fff;
   border-radius: 16px;
@@ -385,6 +402,8 @@ h2 {
   transition:
     transform 0.3s,
     box-shadow 0.3s;
+  width: 320px;
+  flex-shrink: 0;
 }
 .work-card:hover {
   transform: translateY(-6px);
@@ -394,6 +413,7 @@ h2 {
   overflow: hidden;
   height: 180px;
   background: #eef3ef;
+  pointer-events: none; /* 画像自体のドラッグ判定を無効化してスライダーをスムーズに */
 }
 .work-card img {
   width: 100%;
@@ -412,7 +432,7 @@ h2 {
   line-height: 1.4;
 }
 .case-note {
-  margin-top: 30px;
+  margin-top: 10px;
   color: #667c70;
   font-size: 0.9rem;
   text-align: center;
@@ -641,7 +661,7 @@ h2 {
 }
 
 /* ==========================================================================
-   Responsive Mobile Adjustments (スマホ・タブレット完全対応)
+   Responsive Mobile Adjustments
    ========================================================================== */
 .sp-only {
   display: none;
@@ -653,10 +673,6 @@ h2 {
   }
   .hero-content h1 {
     font-size: 2.8rem;
-  }
-  .works-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
   }
   .cards {
     grid-template-columns: repeat(2, 1fr);
@@ -738,7 +754,14 @@ h2 {
     font-size: 2.8rem;
   }
 
-  .works-grid,
+  /* ハイブリッド無限スクロールをスマートフォンでも滑らかに維持 */
+  .work-card {
+    width: 260px;
+  }
+  .card-img-wrap {
+    height: 150px;
+  }
+
   .cards {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -767,7 +790,6 @@ h2 {
     padding: 14px;
   }
 
-  /* 会社概要テーブルをスマホでは縦並びに分解 */
   .table-row {
     flex-direction: column;
   }
