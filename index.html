@@ -3,49 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample Company | Event Demo Site</title>
+    <title>Sample Company | 空間演出・イマーシブプロダクション</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <canvas id="bg-canvas"></canvas>
-    <div class="cursor-glow"></div>
-    <div class="orbs"><span></span><span></span><span></span></div>
-
     <header class="header">
       <div class="logo">Sample Company</div>
       <nav class="nav-links">
-        <a href="#company">COMPANY</a>
-        <a href="#works">WORKS</a>
+        <a href="#about">ABOUT</a>
         <a href="#service">SERVICE</a>
-        <a href="#achievements">CASE</a>
+        <a href="#works">WORKS</a>
+        <a href="#company">COMPANY</a>
         <a href="#contact">CONTACT</a>
       </nav>
     </header>
 
     <section class="hero">
-      <canvas
-        id="hero-canvas"
-        style="position: absolute; inset: 0; z-index: 1; pointer-events: none"
-      ></canvas>
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="videos/138045_1280x720.mp4" type="video/mp4" />
-      </video>
+      <canvas id="hero-wave-canvas"></canvas>
+      <div class="hero-container container">
+        <div class="hero-text-area">
+          <p class="eyebrow">CREATIVE EXPERIENCE DESIGN</p>
+          <h1>心に響く瞬間を<br /><span>デザインする。</span></h1>
+          <p class="lead">
+            私たちは、プロジェクションマッピングやインタラクティブ演出を駆使する空間デザイン企業です。伝統芸能のモダンな演出からビジネスイベントまで、人々の記憶に残る温かみと驚きに満ちた体験を創造します。
+          </p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#service">サービスを見る</a>
+            <a class="btn ghost" href="#contact">お問い合わせ</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="overlay"></div>
-
-      <div class="hero-content container">
-        <p class="eyebrow">CREATIVE & PRODUCTION</p>
-        <h1>企業の伝える力を、<br class="sp-only" />体験で強くする。</h1>
-        <p class="lead">
-          企業イベント、表彰式、インセンティブから配信イベントまで。戦略的な企画と洗練された演出で、参加者の記憶に残る体験を創造します。
-        </p>
-        <div class="hero-cta">
-          <a class="btn primary" href="#service">サービスを見る</a>
-          <a class="btn ghost" href="#works">導入事例</a>
+    <section id="about" class="about container section-padding">
+      <div class="about-grid">
+        <div class="about-title-area">
+          <p class="section-sub">ABOUT US</p>
+          <h2>想いをつなぐ、<br />新しい演出のカタチ</h2>
+        </div>
+        <div class="about-text-area">
+          <p>
+            これまでのイベント演出は、どこか遠くの派手なショーに終始しがちでした。私たちは、最先端のデジタル技術を「もっと身近に、もっと心地よく」届けることを大切にしています。
+          </p>
+          <p>
+            言葉だけでは伝わらない企業のビジョンや、歴史ある伝統芸能の美しさ。それらを独自のアイデアで包み込み、誰もがワクワクできる親しみやすい空間へと仕立て上げます。
+          </p>
         </div>
       </div>
     </section>
@@ -54,259 +60,179 @@
       <div class="stats-container container">
         <div class="stat-item">
           <span class="counter" data-target="500">0</span>
-          <p>EVENTS</p>
+          <p>プロデュースイベント実績</p>
         </div>
         <div class="stat-item">
           <span class="counter" data-target="300">0</span>
-          <p>STREAMING</p>
+          <p>ライブストリーミングサポート</p>
         </div>
         <div class="stat-item">
           <span class="counter" data-target="98">0</span>
-          <p>SATISFACTION</p>
+          <p>お客様満足度</p>
         </div>
       </div>
     </section>
 
-    <section id="company" class="company container">
-      <div class="section-title-wrap text-center">
-        <p class="section-sub">COMPANY PROFILE</p>
-        <h2>会社概要</h2>
+    <section id="service" class="service container section-padding">
+      <div class="section-title-center">
+        <p class="section-sub">OUR SERVICE</p>
+        <h2>事業内容</h2>
       </div>
-      <div class="company-table">
-        <div class="table-row">
-          <div class="table-label">社名</div>
-          <div class="table-value">Sample Company</div>
-        </div>
-        <div class="table-row">
-          <div class="table-label">所在地</div>
-          <div class="table-value">
-            〒100-0005 東京都千代田区丸の内1丁目○○-○○
+
+      <div class="service-layout-list">
+        <div class="service-row">
+          <div class="service-num">01</div>
+          <div class="service-content">
+            <h3>イベント企画・体験設計</h3>
+            <p>
+              イベントの目的や伝えたいメッセージを深くヒアリングし、参加者の感情の流れを計算したストーリーを組み立てます。ただ見るだけでなく、心で感じる体験を設計します。
+            </p>
           </div>
         </div>
-        <div class="table-row">
-          <div class="table-label">電話番号</div>
-          <div class="table-value">03-○○○○-○○○○</div>
+
+        <div class="service-row reverse">
+          <div class="service-num">02</div>
+          <div class="service-content">
+            <h3>空間演出・デジタルコンテンツ制作</h3>
+            <p>
+              プロジェクションマッピング、映像、音響、照明をトータルでディレクション。さらに日本の伝統奇術「和妻」や水芸などを現代風にアレンジした、ここでしか見られないオリジナルショーも展開可能です。
+            </p>
+          </div>
         </div>
-        <div class="table-row">
-          <div class="table-label">メールアドレス</div>
-          <div class="table-value">info@○○○○.com</div>
-        </div>
-        <div class="table-row">
-          <div class="table-label">事業内容</div>
-          <div class="table-value">
-            イベントの企画・演出・運営、ライブ配信・映像制作事業、ステージアトラクションの提供
+
+        <div class="service-row">
+          <div class="service-num">03</div>
+          <div class="service-content">
+            <h3>ハイブリッド・ライブ配信</h3>
+            <p>
+              リアル会場とオンラインをシームレスにつなぐ高画質な配信環境を構築。最新のエフェクト合成や安定したオペレーションにより、場所を選ばない一体感を生み出します。
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="works" class="works">
+    <section id="works" class="works section-padding">
       <div class="container">
-        <div class="section-title-wrap text-center">
-          <p class="section-sub">WORKS</p>
-          <h2>導入事例</h2>
-        </div>
-      </div>
-
-      <div class="works-hybrid-slider" id="works-slider">
-        <div class="works-slider-track" id="works-track">
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow1.jpg" alt="work1" draggable="false" />
-            </div>
-            <p>01. 企業コンベンション／大型発表会</p>
+        <div class="works-header-flex">
+          <div>
+            <p class="section-sub">RECENT WORKS</p>
+            <h2>導入事例</h2>
           </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow2.jpg" alt="work2" draggable="false" />
-            </div>
-            <p>02. 表彰式・インセンティブイベント</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow3.jpg" alt="work3" draggable="false" />
-            </div>
-            <p>03. 伝統芸能を取り入れたステージ演出</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow4.jpg" alt="work4" draggable="false" />
-            </div>
-            <p>04. 配信・ハイブリッドイベント</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow1.jpg" alt="work5" draggable="false" />
-            </div>
-            <p>05. グローバルパートナーカンファレンス</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow2.jpg" alt="work6" draggable="false" />
-            </div>
-            <p>06. 周年記念プロジェクションマッピング</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow3.jpg" alt="work7" draggable="false" />
-            </div>
-            <p>07. 社内表彰式アワードプロデュース</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow4.jpg" alt="work8" draggable="false" />
-            </div>
-            <p>08. 次世代テクノロジー新製品発表会</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow1.jpg" alt="work9" draggable="false" />
-            </div>
-            <p>09. 伝統奇術「和妻」ステージ演出パッケージ</p>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow2.jpg" alt="work10" draggable="false" />
-            </div>
-            <p>10. オンライン株主総会 配信サポート</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="service" class="service container">
-      <div class="section-title-wrap text-center">
-        <p class="section-sub">SERVICE</p>
-        <h2>提供サービス</h2>
-      </div>
-      <p class="service-desc">
-        弊社は企画立案から運営、本番まで一貫してサポートします。管理者意識・経営者意識・お客様意識を共有することで、社員とお客様が一体となる場を作ります。
-      </p>
-      <div class="cards">
-        <div class="service-card">
-          <div class="service-icon">01</div>
-          <h3>企画</h3>
-          <p>
-            目的を達成するためのコンセプト設計から全体の構成プログラムをご提案します。
-          </p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">02</div>
-          <h3>演出</h3>
-          <p>
-            最新の音響・照明、舞台構成で、感情を動かすドラマチックなステージを演出します。
-          </p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">03</div>
-          <h3>配信</h3>
-          <p>
-            マルチカメラや独自のエンコード技術により、安定したハイクオリティ配信を実現します。
+          <p class="works-lead-text">
+            企業の重要イベントから、地域活性化、伝統文化ステージまで、様々な場所でお手伝いしたプロジェクトをご紹介します。
           </p>
         </div>
       </div>
-    </section>
 
-    <section id="achievements" class="achievements">
-      <div class="container">
-        <div class="section-title-wrap text-center">
-          <p class="section-sub">BUSINESS & PERFORMANCE</p>
-          <h2>業務内容・実績</h2>
-        </div>
-
-        <div class="summary-lists">
-          <div class="simple-list">
-            <h3>主な業務内容</h3>
-            <ul>
-              <li>
-                イベント企画・プログラム設計（コンベンション、表彰式、セミナー）
-              </li>
-              <li>演出・ステージ制作（演出設計、音響・照明、舞台構成）</li>
-              <li>配信・ストリーミング（回線・多カメラ・配信運用）</li>
-              <li>ワークショップ運営・参加者体験設計</li>
-              <li>
-                アトラクション企画（和妻・水芸などの伝統芸能の手配・演出）
-              </li>
-            </ul>
+      <div class="works-slider" id="works-slider">
+        <div class="works-track" id="works-track">
+          <div class="work-card">
+            <div class="card-img-wrap">
+              <img src="images/flow1.jpg" alt="事例1" draggable="false" />
+            </div>
+            <div class="card-info">
+              <span class="card-tag">BUSINESS</span>
+              <h4>企業コンベンション / 大型新製品発表会</h4>
+            </div>
           </div>
-          <div class="simple-list">
-            <h3>主な業務実績</h3>
-            <ul>
-              <li>企業コンベンション／大型発表会の企画・運営</li>
-              <li>インセンティブイベント・表彰式の演出・運営</li>
-              <li>ステージアトラクション（和妻・水芸等）の企画・提供</li>
-              <li>ライブ配信・ハイブリッドイベントの実施</li>
-              <li>各種セミナー・展示会の演出・運営サポート</li>
-            </ul>
+          <div class="work-card">
+            <div class="card-img-wrap">
+              <img src="images/flow2.jpg" alt="事例2" draggable="false" />
+            </div>
+            <div class="card-info">
+              <span class="card-tag">AWARD</span>
+              <h4>社内表彰式・アワード空間プロデュース</h4>
+            </div>
           </div>
-        </div>
-
-        <div class="ach-list">
-          <h3>実施イベント（詳細）</h3>
-          <div class="ach-detail-grid">
-            <div class="ach-detail-item">
-              <h4>企業コンベンション</h4>
-              <p>
-                社員の管理者意識・経営者意識・お客様意識を共有するためのプログラム設計、ワークショップ運営、演出・運営まで一貫してサポートします。
-              </p>
+          <div class="work-card">
+            <div class="card-img-wrap">
+              <img src="images/flow3.jpg" alt="事例3" draggable="false" />
             </div>
-            <div class="ach-detail-item">
-              <h4>インセンティブ向けステージ</h4>
-              <p>
-                集客と参加者満足を高める演出・アトラクションの企画実施。音響・照明・出演者手配、会場設営を含むパッケージ提供が可能です。
-              </p>
+            <div class="card-info">
+              <span class="card-tag">CULTURE</span>
+              <h4>デジタル演出の融合ステージ運営</h4>
             </div>
-            <div class="ach-detail-item highlight-item">
-              <h4>和妻・水芸ショー</h4>
-              <p class="mb-10">
-                江戸手妻に由来する伝統的な奇術を取り入れたショー（約30分構成：和妻演目2～3、続けて約10分の水芸）。
-              </p>
-              <span class="badge">演目例</span>
-              <ul class="nested-list">
-                <li><strong>万倍傘</strong> — 次々と傘が出現する演目</li>
-                <li><strong>胡蝶の舞</strong> — 2羽の蝶の物語を表現する演目</li>
-                <li>
-                  <strong>日本蒸籠</strong> — 箱の中から様々な出現物が出る演目
-                </li>
-                <li>
-                  <strong>水芸</strong> —
-                  トリ演目として約10分の水を使った演出（防水養生済み）
-                </li>
-              </ul>
+          </div>
+          <div class="work-card">
+            <div class="card-img-wrap">
+              <img src="images/flow4.jpg" alt="事例4" draggable="false" />
             </div>
-            <div class="ach-detail-item">
-              <h4>配信・ストリーミング</h4>
-              <p>
-                多カメラ運用、エンコーディング、配信プラットフォーム運用、オンライン参加者向けの演出設計など一貫した配信サービスの提供実績があります。
-              </p>
+            <div class="card-info">
+              <span class="card-tag">STREAMING</span>
+              <h4>ハイブリッド型グローバルパートナー会議</h4>
+            </div>
+          </div>
+          <div class="work-card">
+            <div class="card-img-wrap">
+              <img src="images/flow1.jpg" alt="事例5" draggable="false" />
+            </div>
+            <div class="card-info">
+              <span class="card-tag">CULTURE</span>
+              <h4>エンターテインメントショー企画</h4>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="company" class="company container section-padding">
+      <div class="company-grid">
+        <div class="company-title">
+          <p class="section-sub">COMPANY PROFILE</p>
+          <h2>会社概要</h2>
+        </div>
+        <div class="company-details">
+          <dl class="profile-list">
+            <dt>社名</dt>
+            <dd>Sample Company</dd>
+            <dt>所在地</dt>
+            <dd>〒100-0005 東京都千代田区丸の内1丁目○○-○○</dd>
+            <dt>設立 / 代表</dt>
+            <dd>2018年4月 / ○○ ○○</dd>
+            <dt>主な事業</dt>
+            <dd>
+              イマーシブイベントの企画・運営、映像システム開発、空間デザイン、伝統芸能ライセンス事業、映像配信代行
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section-padding">
       <div class="container contact-inner">
-        <div class="section-title-wrap text-center">
-          <p class="section-sub">CONTACT</p>
+        <div class="section-title-center">
+          <p class="section-sub">CONTACT US</p>
           <h2>お問い合わせ</h2>
+          <p class="contact-lead">
+            イベントの演出相談や御見積など、まずはお気軽にご相談ください。
+          </p>
         </div>
-        <div class="contact-form">
-          <div class="form-group">
-            <input type="text" placeholder="お名前" required />
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>お名前</label>
+              <input type="text" placeholder="例）山田 太郎" required />
+            </div>
+            <div class="form-group">
+              <label>メールアドレス</label>
+              <input type="email" placeholder="例）example@xxxx.com" required />
+            </div>
           </div>
           <div class="form-group">
-            <input type="email" placeholder="メールアドレス" required />
-          </div>
-          <div class="form-group">
+            <label>ご相談内容</label>
             <textarea
-              placeholder="お問い合わせ内容"
+              placeholder="イベントの概要、検討時期、ご予算など、わかる範囲でご記入ください"
               rows="6"
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn primary submit-btn">送信する</button>
-        </div>
+          <div class="text-center">
+            <button type="submit" class="btn primary submit-btn">
+              この内容で送信する
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
