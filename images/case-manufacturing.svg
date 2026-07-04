@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#141d33"/>
+    </linearGradient>
+    <radialGradient id="glow3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid3" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#22d3ee" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg3)"/>
+  <rect width="800" height="500" fill="url(#grid3)"/>
+  <circle cx="600" cy="380" r="220" fill="url(#glow3)"/>
+  <g transform="translate(340,110)" fill="none" stroke="#3b82f6" stroke-width="4">
+    <circle cx="60" cy="60" r="46"/>
+    <g stroke="#3b82f6">
+      <line x1="60" y1="2" x2="60" y2="20"/>
+      <line x1="60" y1="100" x2="60" y2="118"/>
+      <line x1="2" y1="60" x2="20" y2="60"/>
+      <line x1="100" y1="60" x2="118" y2="60"/>
+      <line x1="20" y1="20" x2="33" y2="33"/>
+      <line x1="87" y1="87" x2="100" y2="100"/>
+      <line x1="100" y1="20" x2="87" y2="33"/>
+      <line x1="33" y1="87" x2="20" y2="100"/>
+    </g>
+    <circle cx="60" cy="60" r="16" fill="#22d3ee" stroke="none"/>
+  </g>
+  <g transform="translate(150,260)" fill="none" stroke="#22d3ee" stroke-width="3.5">
+    <rect x="0" y="0" width="70" height="70" rx="8"/>
+    <rect x="14" y="14" width="42" height="42" rx="4"/>
+    <line x1="35" y1="-14" x2="35" y2="0"/>
+    <line x1="35" y1="70" x2="35" y2="84"/>
+    <line x1="-14" y1="35" x2="0" y2="35"/>
+    <line x1="70" y1="35" x2="84" y2="35"/>
+  </g>
+  <text x="60" y="440" font-family="Arial, sans-serif" font-size="22" fill="#9fb0d0" letter-spacing="2">MANUFACTURING / IoT</text>
+</svg>

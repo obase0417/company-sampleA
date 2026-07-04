@@ -1,128 +1,235 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- 1. HERO専用: 激しいデジタル波形ラインアニメーション ---
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  /* --------------------------------------------------------------------
+     1. Header: shrink + background on scroll
+  -------------------------------------------------------------------- */
   (() => {
-    const canvas = document.getElementById("hero-wave-canvas");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-
-    function resize() {
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
-    }
-    resize();
-    window.addEventListener("resize", resize);
-
-    let count = 0;
-    // 重なり合う3本の波線をシミュレート（よりエネルギッシュな動き）
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      count += 0.04; // 速度（数値を上げると激しくなります）
-
-      const lines = [
-        {
-          color: "rgba(56, 189, 248, 0.25)",
-          amplitude: 55,
-          speed: 1,
-          freq: 0.006,
-        },
-        {
-          color: "rgba(74, 222, 128, 0.2)",
-          amplitude: 75,
-          speed: 1.4,
-          freq: 0.004,
-        },
-        {
-          color: "rgba(37, 99, 219, 0.15)",
-          amplitude: 35,
-          speed: 0.8,
-          freq: 0.009,
-        },
-      ];
-
-      lines.forEach((line) => {
-        ctx.beginPath();
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = line.color;
-
-        for (let x = 0; x < canvas.width; x += 5) {
-          // サイン波を幾重にも組み合わせて激しく不規則なウエーブを表現
-          const y =
-            canvas.height / 2 +
-            Math.sin(x * line.freq + count * line.speed) * line.amplitude +
-            Math.cos(x * 0.002 - count * 0.5) * (line.amplitude * 0.4);
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      });
-
-      requestAnimationFrame(animate);
-    }
-    animate();
+    const header = document.getElementById("site-header");
+    if (!header) return;
+    const onScroll = () => {
+      header.classList.toggle("scrolled", window.scrollY > 40);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
   })();
 
-  // --- 2. 実績数値カウンター ---
-  document.querySelectorAll(".counter").forEach((c) => {
-    let t = +c.dataset.target,
-      v = 0;
-    const run = () => {
-      v += Math.max(1, t / 60);
-      if (v < t) {
-        c.textContent = Math.floor(v);
-        requestAnimationFrame(run);
+  /* --------------------------------------------------------------------
+     2. Mobile nav toggle
+  -------------------------------------------------------------------- */
+  (() => {
+    const toggle = document.getElementById("nav-toggle");
+    const overlay = document.getElementById("nav-overlay");
+    if (!toggle || !overlay) return;
+
+    const close = () => {
+      toggle.classList.remove("active");
+      overlay.classList.remove("active");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    };
+    const open = () => {
+      toggle.classList.add("active");
+      overlay.classList.add("active");
+      toggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
+
+    toggle.addEventListener("click", () => {
+      const isActive = toggle.classList.contains("active");
+      isActive ? close() : open();
+    });
+
+    overlay.querySelectorAll("a[data-nav]").forEach((link) => {
+      link.addEventListener("click", close);
+    });
+  })();
+
+  /* --------------------------------------------------------------------
+     3. Hero network canvas (subtle particle / node network)
+  -------------------------------------------------------------------- */
+  (() => {
+    const canvas = document.getElementById("hero-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let width, height, particles;
+    const DENSITY = 14000; // px^2 per particle
+    const LINK_DIST = 150;
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+      const count = Math.min(90, Math.max(30, Math.floor((width * height) / DENSITY)));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function step() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+      });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx.strokeStyle = `rgba(90, 160, 230, ${0.16 * (1 - dist / LINK_DIST)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(120, 200, 255, 0.55)";
+        ctx.fill();
+      });
+
+      if (!prefersReducedMotion) requestAnimationFrame(step);
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+    step();
+  })();
+
+  /* --------------------------------------------------------------------
+     4. Scroll reveal animations
+  -------------------------------------------------------------------- */
+  (() => {
+    const targets = document.querySelectorAll(".reveal");
+    if (!targets.length) return;
+
+    if (prefersReducedMotion) {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const groups = new Map();
+    targets.forEach((el) => {
+      const parent = el.parentElement;
+      if (!groups.has(parent)) groups.set(parent, []);
+      groups.get(parent).push(el);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const siblings = groups.get(el.parentElement) || [el];
+          const idx = siblings.indexOf(el);
+          setTimeout(() => el.classList.add("is-visible"), Math.min(idx, 6) * 90);
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+    );
+
+    targets.forEach((el) => observer.observe(el));
+  })();
+
+  /* --------------------------------------------------------------------
+     5. Stat counters
+  -------------------------------------------------------------------- */
+  (() => {
+    const counters = document.querySelectorAll(".counter");
+    if (!counters.length) return;
+
+    const animate = (el) => {
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimal || "0", 10);
+      const suffix = el.dataset.suffix || "";
+      const duration = 1400;
+      const start = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = target * eased;
+        el.textContent = value.toFixed(decimals) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      if (prefersReducedMotion) {
+        el.textContent = target.toFixed(decimals) + suffix;
       } else {
-        c.textContent = t + (t === 98 ? "%" : "+");
+        requestAnimationFrame(tick);
       }
     };
 
-    const obs = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        run();
-        obs.disconnect();
-      }
-    });
-    obs.observe(c);
-  });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    counters.forEach((c) => observer.observe(c));
+  })();
 
-  // --- 3. 導入事例 (WORKS) 自動無限スクロール ---
+  /* --------------------------------------------------------------------
+     6. Case study slider (auto-scroll + drag)
+  -------------------------------------------------------------------- */
   (() => {
-    const slider = document.getElementById("works-slider");
-    const track = document.getElementById("works-track");
+    const slider = document.getElementById("case-slider");
+    const track = document.getElementById("case-track");
     if (!slider || !track) return;
 
-    const items = Array.from(track.children);
-    items.forEach((item) => {
-      const clone = item.cloneNode(true);
-      track.appendChild(clone);
-    });
+    const originalItems = Array.from(track.children);
+    originalItems.forEach((item) => track.appendChild(item.cloneNode(true)));
 
     let currentX = 0;
     let isDragging = false;
     let startX = 0;
     let dragStartX = 0;
-    const autoSpeed = 0.6;
+    let autoSpeed = 0.45;
+    let paused = false;
 
-    function getHalfWidth() {
-      const card = track.querySelector(".work-card");
+    function halfWidth() {
+      const card = track.querySelector(".case-card");
       if (!card) return 0;
       const style = window.getComputedStyle(track);
-      const gap = parseInt(style.gap) || 32;
-      return (card.offsetWidth + gap) * items.length;
+      const gap = parseFloat(style.gap) || 28;
+      return (card.offsetWidth + gap) * originalItems.length;
     }
 
-    function updateScroll() {
-      const halfWidth = getHalfWidth();
-      if (!isDragging && halfWidth > 0) {
+    function frame() {
+      const hw = halfWidth();
+      if (!isDragging && !paused && hw > 0) {
         currentX -= autoSpeed;
-        if (currentX <= -halfWidth) {
-          currentX += halfWidth;
-        }
       }
-      if (currentX > 0 && halfWidth > 0) {
-        currentX -= halfWidth;
+      if (hw > 0) {
+        if (currentX <= -hw) currentX += hw;
+        if (currentX > 0) currentX -= hw;
       }
       track.style.transform = `translateX(${currentX}px)`;
-      requestAnimationFrame(updateScroll);
+      requestAnimationFrame(frame);
     }
 
     const dragStart = (x) => {
@@ -132,8 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     const dragMove = (x) => {
       if (!isDragging) return;
-      const deltaX = x - startX;
-      currentX = dragStartX + deltaX;
+      currentX = dragStartX + (x - startX);
     };
     const dragEnd = () => {
       isDragging = false;
@@ -142,18 +248,37 @@ document.addEventListener("DOMContentLoaded", () => {
     slider.addEventListener("mousedown", (e) => dragStart(e.clientX));
     window.addEventListener("mousemove", (e) => dragMove(e.clientX));
     window.addEventListener("mouseup", dragEnd);
-    slider.addEventListener(
-      "touchstart",
-      (e) => dragStart(e.touches[0].clientX),
-      { passive: true },
-    );
-    window.addEventListener(
-      "touchmove",
-      (e) => dragMove(e.touches[0].clientX),
-      { passive: true },
-    );
+    slider.addEventListener("touchstart", (e) => dragStart(e.touches[0].clientX), { passive: true });
+    window.addEventListener("touchmove", (e) => dragMove(e.touches[0].clientX), { passive: true });
     window.addEventListener("touchend", dragEnd);
 
-    requestAnimationFrame(updateScroll);
+    slider.addEventListener("mouseenter", () => (paused = true));
+    slider.addEventListener("mouseleave", () => (paused = false));
+
+    if (!prefersReducedMotion) {
+      requestAnimationFrame(frame);
+    }
+  })();
+
+  /* --------------------------------------------------------------------
+     7. Contact form (client-side only demo submission)
+  -------------------------------------------------------------------- */
+  (() => {
+    const form = document.getElementById("contact-form");
+    const note = document.getElementById("form-note");
+    if (!form || !note) return;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        note.textContent = "未入力の必須項目があります。ご確認ください。";
+        note.classList.add("error");
+        form.reportValidity();
+        return;
+      }
+      note.classList.remove("error");
+      note.textContent = "お問い合わせありがとうございます。担当者より折り返しご連絡いたします。";
+      form.reset();
+    });
   })();
 });

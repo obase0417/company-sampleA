@@ -3,241 +3,462 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample Company | 空間演出・イマーシブプロダクション</title>
+    <title>Sample | テクノロジーで、社会実装を加速するSES企業</title>
+    <meta
+      name="description"
+      content="株式会社Sampleは、システムエンジニアリングサービス(SES)・受託開発・DX推進支援を通じて、テクノロジーで企業の「次の一手」を支えるIT企業です。"
+    />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header class="header">
-      <div class="logo">Sample Company</div>
-      <nav class="nav-links">
-        <a href="#about">ABOUT</a>
-        <a href="#service">SERVICE</a>
-        <a href="#works">WORKS</a>
-        <a href="#company">COMPANY</a>
-        <a href="#contact">CONTACT</a>
-      </nav>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
+    <header class="header" id="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="logo">
+          <img src="images/logo-mark.svg" alt="" class="logo-mark" width="34" height="34" />
+          <span>Sample</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links">
+          <a href="#about" data-nav>ABOUT</a>
+          <a href="#service" data-nav>SERVICE</a>
+          <a href="#strength" data-nav>STRENGTH</a>
+          <a href="#flow" data-nav>FLOW</a>
+          <a href="#case" data-nav>CASE</a>
+          <a href="#recruit" data-nav>RECRUIT</a>
+          <a href="#company" data-nav>COMPANY</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#contact" class="btn primary btn-sm">お問い合わせ</a>
+          <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
     </header>
 
-    <section class="hero">
-      <canvas id="hero-wave-canvas"></canvas>
-      <div class="hero-container container">
-        <div class="hero-text-area">
-          <p class="eyebrow">CREATIVE EXPERIENCE DESIGN</p>
-          <h1>心に響く瞬間を<br /><span>デザインする。</span></h1>
-          <p class="lead">
-            私たちは、プロジェクションマッピングやインタラクティブ演出を駆使する空間デザイン企業です。伝統芸能のモダンな演出からビジネスイベントまで、人々の記憶に残る温かみと驚きに満ちた体験を創造します。
+    <div class="nav-overlay" id="nav-overlay">
+      <nav class="nav-overlay-links">
+        <a href="#about" data-nav>ABOUT</a>
+        <a href="#service" data-nav>SERVICE</a>
+        <a href="#strength" data-nav>STRENGTH</a>
+        <a href="#flow" data-nav>FLOW</a>
+        <a href="#case" data-nav>CASE</a>
+        <a href="#recruit" data-nav>RECRUIT</a>
+        <a href="#company" data-nav>COMPANY</a>
+        <a href="#contact" data-nav>CONTACT</a>
+      </nav>
+    </div>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-gradient" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <p class="eyebrow reveal">SES / SYSTEM ENGINEERING SERVICE</p>
+          <h1 class="reveal">
+            エンジニアの発想を、<br />
+            <span class="gradient-text">社会実装のスピード</span>に変える。
+          </h1>
+          <p class="lead reveal">
+            株式会社Sampleは、システムエンジニアリングサービス（SES）を軸に、受託開発・DX推進支援・IT人材育成までを一気通貫で提供するテクノロジーカンパニーです。金融・医療・製造・自治体など、あらゆる現場のデジタル化をエンジニアリングの力で前へ進めます。
           </p>
-          <div class="hero-cta">
+          <div class="hero-cta reveal">
             <a class="btn primary" href="#service">サービスを見る</a>
-            <a class="btn ghost" href="#contact">お問い合わせ</a>
+            <a class="btn ghost" href="#recruit">採用情報</a>
           </div>
         </div>
-      </div>
-    </section>
+        <a href="#about" class="scroll-cue" aria-label="下にスクロール">
+          <span></span>
+        </a>
+      </section>
 
-    <section id="about" class="about container section-padding">
-      <div class="about-grid">
-        <div class="about-title-area">
-          <p class="section-sub">ABOUT US</p>
-          <h2>想いをつなぐ、<br />新しい演出のカタチ</h2>
+      <section class="stats-band">
+        <div class="container stats-container">
+          <div class="stat-item reveal">
+            <span class="counter" data-target="287" data-suffix="+">0</span>
+            <p>稼働エンジニア数</p>
+          </div>
+          <div class="stat-item reveal">
+            <span class="counter" data-target="180" data-suffix="+">0</span>
+            <p>お取引企業数</p>
+          </div>
+          <div class="stat-item reveal">
+            <span class="counter" data-target="4.3" data-decimal="1" data-suffix="年">0</span>
+            <p>平均契約継続年数</p>
+          </div>
+          <div class="stat-item reveal">
+            <span class="counter" data-target="96" data-suffix="%">0</span>
+            <p>エンジニア満足度</p>
+          </div>
         </div>
-        <div class="about-text-area">
-          <p>
-            これまでのイベント演出は、どこか遠くの派手なショーに終始しがちでした。私たちは、最先端のデジタル技術を「もっと身近に、もっと心地よく」届けることを大切にしています。
-          </p>
-          <p>
-            言葉だけでは伝わらない企業のビジョンや、歴史ある伝統芸能の美しさ。それらを独自のアイデアで包み込み、誰もがワクワクできる親しみやすい空間へと仕立て上げます。
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="stats">
-      <div class="stats-container container">
-        <div class="stat-item">
-          <span class="counter" data-target="500">0</span>
-          <p>プロデュースイベント実績</p>
+      <section id="about" class="about section-padding">
+        <div class="container about-grid">
+          <div class="about-visual reveal">
+            <img src="images/about-visual.svg" alt="Sampleのエンジニアリングチームによる開発イメージ" loading="lazy" />
+            <div class="floating-card card-a">
+              <strong>Since 2016</strong>
+              <span>テクノロジーで現場を支えて9年目</span>
+            </div>
+            <div class="floating-card card-b">
+              <strong>287<small>名+</small></strong>
+              <span>在籍エンジニア</span>
+            </div>
+          </div>
+          <div class="about-text">
+            <p class="section-sub reveal">ABOUT US</p>
+            <h2 class="reveal">
+              テクノロジーの実装力で、<br />企業の「次の一手」を支える。
+            </h2>
+            <p class="reveal">
+              私たちが向き合うのは、コードの先にある事業そのものです。要件定義から設計・開発・運用保守まで、エンジニアが現場に深く入り込み、技術と課題解決の両輪で価値を生み出します。
+            </p>
+            <p class="reveal">
+              一人ひとりのエンジニアが専門性を磨きながら、多様な業界のプロジェクトに携われる環境を用意し、技術力とキャリアの両方が育つ組織を目指しています。
+            </p>
+            <ul class="about-points">
+              <li class="reveal"><span>01</span>金融・医療・製造・自治体など幅広い領域での開発実績</li>
+              <li class="reveal"><span>02</span>要件定義から運用保守までワンストップで対応</li>
+              <li class="reveal"><span>03</span>エンジニアの技術力向上を支える研修・資格支援制度</li>
+            </ul>
+          </div>
         </div>
-        <div class="stat-item">
-          <span class="counter" data-target="300">0</span>
-          <p>ライブストリーミングサポート</p>
-        </div>
-        <div class="stat-item">
-          <span class="counter" data-target="98">0</span>
-          <p>お客様満足度</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="service" class="service container section-padding">
-      <div class="section-title-center">
-        <p class="section-sub">OUR SERVICE</p>
-        <h2>事業内容</h2>
-      </div>
-
-      <div class="service-layout-list">
-        <div class="service-row">
-          <div class="service-num">01</div>
-          <div class="service-content">
-            <h3>イベント企画・体験設計</h3>
-            <p>
-              イベントの目的や伝えたいメッセージを深くヒアリングし、参加者の感情の流れを計算したストーリーを組み立てます。ただ見るだけでなく、心で感じる体験を設計します。
+      <section id="service" class="service section-padding">
+        <div class="container">
+          <div class="section-title-center">
+            <p class="section-sub reveal">OUR SERVICE</p>
+            <h2 class="reveal">事業内容</h2>
+            <p class="section-lead reveal">
+              SESを中核としながら、開発・コンサルティング・人材育成まで、テクノロジーに関わる課題をワンストップで解決します。
             </p>
           </div>
-        </div>
 
-        <div class="service-row reverse">
-          <div class="service-num">02</div>
-          <div class="service-content">
-            <h3>空間演出・デジタルコンテンツ制作</h3>
-            <p>
-              プロジェクションマッピング、映像、音響、照明をトータルでディレクション。さらに日本の伝統奇術「和妻」や水芸などを現代風にアレンジした、ここでしか見られないオリジナルショーも展開可能です。
-            </p>
+          <div class="service-grid">
+            <div class="service-card reveal">
+              <div class="service-icon">
+                <svg viewBox="0 0 48 48" fill="none"><path d="M8 14a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v14a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6V14Z" stroke="url(#si1)" stroke-width="2.4"/><path d="M18 20l-5 5 5 5M30 20l5 5-5 5M27 17l-6 16" stroke="url(#si1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="si1" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs></svg>
+              </div>
+              <h3>SES（システムエンジニアリングサービス）</h3>
+              <p>お客様先常駐または自社ラボ型で、要件定義から開発・運用まで対応できるエンジニアをアサイン。技術領域・稼働形態に応じた柔軟な体制構築を支援します。</p>
+            </div>
+
+            <div class="service-card reveal">
+              <div class="service-icon">
+                <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="10" width="34" height="24" rx="3" stroke="url(#si2)" stroke-width="2.4"/><path d="M15 40h18M24 34v6" stroke="url(#si2)" stroke-width="2.4" stroke-linecap="round"/><path d="M14 22l5 4-5 4M26 30h6" stroke="url(#si2)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="si2" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs></svg>
+              </div>
+              <h3>受託システム開発</h3>
+              <p>業務システム、Webサービス、モバイルアプリなどを企画から要件定義・設計・開発・保守まで一貫して受託。アジャイルとウォーターフォールを案件特性に応じて使い分けます。</p>
+            </div>
+
+            <div class="service-card reveal">
+              <div class="service-icon">
+                <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="url(#si3)" stroke-width="2.4"/><path d="M24 16v8l6 4" stroke="url(#si3)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="si3" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+              </div>
+              <h3>DX推進コンサルティング</h3>
+              <p>業務プロセスの可視化から、クラウド移行・データ活用基盤の構築、社内DX人材の育成支援まで、伴走型でお客様のデジタル変革を後押しします。</p>
+            </div>
+
+            <div class="service-card reveal">
+              <div class="service-icon">
+                <svg viewBox="0 0 48 48" fill="none"><circle cx="18" cy="16" r="6" stroke="url(#si4)" stroke-width="2.4"/><path d="M6 40c0-7 5-12 12-12s12 5 12 12" stroke="url(#si4)" stroke-width="2.4" stroke-linecap="round"/><path d="M32 12a6 6 0 0 1 6 12M44 40c0-6-4-10-9-11" stroke="url(#si4)" stroke-width="2.4" stroke-linecap="round"/><defs><linearGradient id="si4" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+              </div>
+              <h3>ITエンジニア育成・研修</h3>
+              <p>未経験者向け研修から、クラウド・セキュリティ・AI活用まで対応する現役エンジニア向け研修プログラムを提供。企業様向けの技術研修受託にも対応します。</p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="service-row">
-          <div class="service-num">03</div>
-          <div class="service-content">
-            <h3>ハイブリッド・ライブ配信</h3>
-            <p>
-              リアル会場とオンラインをシームレスにつなぐ高画質な配信環境を構築。最新のエフェクト合成や安定したオペレーションにより、場所を選ばない一体感を生み出します。
-            </p>
+      <section id="strength" class="strength section-padding">
+        <div class="container">
+          <div class="section-title-center">
+            <p class="section-sub reveal">STRENGTH</p>
+            <h2 class="reveal">Sampleが選ばれる理由</h2>
+          </div>
+
+          <div class="strength-grid">
+            <div class="strength-card reveal">
+              <span class="strength-num">01</span>
+              <h3>幅広い技術領域への対応力</h3>
+              <p>フロントエンド・バックエンド・インフラ・クラウド・データ・モバイル・組み込みまで、多様な技術領域のエンジニアが在籍しています。</p>
+            </div>
+            <div class="strength-card reveal">
+              <span class="strength-num">02</span>
+              <h3>手厚いキャリアサポート体制</h3>
+              <p>専任の技術サポート担当が定期面談を実施。案件選定からスキルアップ、キャリアプランの相談まで継続的に伴走します。</p>
+            </div>
+            <div class="strength-card reveal">
+              <span class="strength-num">03</span>
+              <h3>スピーディで精度の高いマッチング</h3>
+              <p>独自のスキル管理データベースにより、案件要件とエンジニアの適性を素早くマッチング。平均提案スピードは業界水準を上回ります。</p>
+            </div>
+            <div class="strength-card reveal">
+              <span class="strength-num">04</span>
+              <h3>高い定着率・契約継続率</h3>
+              <p>平均契約継続年数4.3年、エンジニア満足度96%。安心して長く働ける環境づくりが、結果としてお客様への安定した価値提供につながっています。</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="works" class="works section-padding">
-      <div class="container">
-        <div class="works-header-flex">
+      <section id="flow" class="flow section-padding">
+        <div class="container">
+          <div class="section-title-center">
+            <p class="section-sub reveal">FLOW</p>
+            <h2 class="reveal">ご契約までの流れ</h2>
+          </div>
+
+          <div class="flow-timeline">
+            <div class="flow-step reveal">
+              <div class="flow-step-num">01</div>
+              <h3>お問い合わせ</h3>
+              <p>フォームまたはお電話にて、ご相談内容や案件概要をお伺いします。</p>
+            </div>
+            <div class="flow-step reveal">
+              <div class="flow-step-num">02</div>
+              <h3>ヒアリング</h3>
+              <p>必要な技術領域・稼働人数・期間・予算感など、詳細な要件をすり合わせます。</p>
+            </div>
+            <div class="flow-step reveal">
+              <div class="flow-step-num">03</div>
+              <h3>エンジニア選定・面談</h3>
+              <p>要件に合致するエンジニアを選定し、スキルシートの提出や面談を調整します。</p>
+            </div>
+            <div class="flow-step reveal">
+              <div class="flow-step-num">04</div>
+              <h3>ご契約</h3>
+              <p>契約条件・稼働形態を確定し、業務委託契約を締結します。</p>
+            </div>
+            <div class="flow-step reveal">
+              <div class="flow-step-num">05</div>
+              <h3>稼働開始・フォロー</h3>
+              <p>稼働開始後も担当者が定期的にフォローし、安定した業務遂行を支援します。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="case" class="case section-padding">
+        <div class="container case-header">
           <div>
-            <p class="section-sub">RECENT WORKS</p>
-            <h2>導入事例</h2>
+            <p class="section-sub reveal">CASE STUDY</p>
+            <h2 class="reveal">導入事例</h2>
           </div>
-          <p class="works-lead-text">
-            企業の重要イベントから、地域活性化、伝統文化ステージまで、様々な場所でお手伝いしたプロジェクトをご紹介します。
+          <p class="case-lead reveal">
+            金融、医療、製造、自治体、小売、通信インフラなど、さまざまな業界のシステム開発・運用を支援してきた実績の一部をご紹介します。
           </p>
         </div>
-      </div>
 
-      <div class="works-slider" id="works-slider">
-        <div class="works-track" id="works-track">
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow1.jpg" alt="事例1" draggable="false" />
+        <div class="case-slider" id="case-slider">
+          <div class="case-track" id="case-track">
+            <div class="case-card">
+              <div class="case-img"><img src="images/case-fintech.svg" alt="金融機関の勘定系システム刷新プロジェクト" loading="lazy" /></div>
+              <div class="case-info">
+                <span class="case-tag">FINANCE</span>
+                <h4>金融機関 基幹システム刷新プロジェクト</h4>
+                <p>大手金融機関の勘定系システムのモダナイズを、要件定義から結合テストまで支援。</p>
+              </div>
             </div>
-            <div class="card-info">
-              <span class="card-tag">BUSINESS</span>
-              <h4>企業コンベンション / 大型新製品発表会</h4>
+            <div class="case-card">
+              <div class="case-img"><img src="images/case-medical.svg" alt="医療機関の電子カルテ連携基盤開発" loading="lazy" /></div>
+              <div class="case-info">
+                <span class="case-tag">HEALTHCARE</span>
+                <h4>医療機関 電子カルテ連携基盤の開発</h4>
+                <p>複数病院間のデータ連携基盤をクラウド上に構築し、情報共有の高速化に貢献。</p>
+              </div>
             </div>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow2.jpg" alt="事例2" draggable="false" />
+            <div class="case-card">
+              <div class="case-img"><img src="images/case-manufacturing.svg" alt="製造業のIoTデータ収集基盤構築" loading="lazy" /></div>
+              <div class="case-info">
+                <span class="case-tag">MANUFACTURING</span>
+                <h4>製造業 IoTデータ収集・可視化基盤</h4>
+                <p>工場ライン設備のセンサーデータを収集・可視化する基盤をゼロから構築。</p>
+              </div>
             </div>
-            <div class="card-info">
-              <span class="card-tag">AWARD</span>
-              <h4>社内表彰式・アワード空間プロデュース</h4>
+            <div class="case-card">
+              <div class="case-img"><img src="images/case-government.svg" alt="自治体窓口システムのDX支援" loading="lazy" /></div>
+              <div class="case-info">
+                <span class="case-tag">PUBLIC</span>
+                <h4>自治体 窓口業務システムのDX支援</h4>
+                <p>紙申請中心だった窓口業務を電子申請へ移行し、住民の待ち時間を大幅に削減。</p>
+              </div>
             </div>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow3.jpg" alt="事例3" draggable="false" />
+            <div class="case-card">
+              <div class="case-img"><img src="images/case-retail.svg" alt="小売業のECプラットフォーム開発" loading="lazy" /></div>
+              <div class="case-info">
+                <span class="case-tag">RETAIL</span>
+                <h4>小売業 ECプラットフォームの新規開発</h4>
+                <p>在庫連携・決済・会員基盤を含むECサイトをフルスクラッチで開発。</p>
+              </div>
             </div>
-            <div class="card-info">
-              <span class="card-tag">CULTURE</span>
-              <h4>デジタル演出の融合ステージ運営</h4>
-            </div>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow4.jpg" alt="事例4" draggable="false" />
-            </div>
-            <div class="card-info">
-              <span class="card-tag">STREAMING</span>
-              <h4>ハイブリッド型グローバルパートナー会議</h4>
-            </div>
-          </div>
-          <div class="work-card">
-            <div class="card-img-wrap">
-              <img src="images/flow1.jpg" alt="事例5" draggable="false" />
-            </div>
-            <div class="card-info">
-              <span class="card-tag">CULTURE</span>
-              <h4>エンターテインメントショー企画</h4>
+            <div class="case-card">
+              <div class="case-img"><img src="images/case-telecom.svg" alt="通信キャリアのネットワーク監視システム開発" loading="lazy" /></div>
+              <div class="case-info">
+                <span class="case-tag">TELECOM</span>
+                <h4>通信キャリア ネットワーク監視システム開発</h4>
+                <p>全国規模の通信インフラを24時間監視するシステムの開発・運用を担当。</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="company" class="company container section-padding">
-      <div class="company-grid">
-        <div class="company-title">
-          <p class="section-sub">COMPANY PROFILE</p>
-          <h2>会社概要</h2>
+      <section id="recruit" class="recruit-band">
+        <div class="container recruit-grid">
+          <div class="recruit-text">
+            <p class="section-sub light reveal">RECRUIT</p>
+            <h2 class="reveal">テクノロジーで、<br />変化をつくる仲間へ。</h2>
+            <p class="reveal">
+              Sampleは、技術で課題に向き合うエンジニアと共に成長していきたいと考えています。経験者はもちろん、これから技術力を磨きたい方にも、研修・資格支援・キャリア面談など手厚いサポート体制を用意しています。
+            </p>
+            <div class="recruit-cta reveal">
+              <a href="#contact" class="btn primary">採用に関するお問い合わせ</a>
+            </div>
+          </div>
+          <div class="recruit-visual reveal">
+            <img src="images/recruit-visual.svg" alt="Sampleで働くエンジニアのネットワークイメージ" loading="lazy" />
+          </div>
         </div>
-        <div class="company-details">
-          <dl class="profile-list">
-            <dt>社名</dt>
-            <dd>Sample Company</dd>
-            <dt>所在地</dt>
-            <dd>〒100-0005 東京都千代田区丸の内1丁目○○-○○</dd>
-            <dt>設立 / 代表</dt>
-            <dd>2018年4月 / ○○ ○○</dd>
-            <dt>主な事業</dt>
-            <dd>
-              イマーシブイベントの企画・運営、映像システム開発、空間デザイン、伝統芸能ライセンス事業、映像配信代行
-            </dd>
-          </dl>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="contact section-padding">
-      <div class="container contact-inner">
-        <div class="section-title-center">
-          <p class="section-sub">CONTACT US</p>
-          <h2>お問い合わせ</h2>
-          <p class="contact-lead">
-            イベントの演出相談や御見積など、まずはお気軽にご相談ください。
-          </p>
+      <section id="company" class="company section-padding">
+        <div class="container company-grid">
+          <div class="company-title">
+            <p class="section-sub reveal">COMPANY</p>
+            <h2 class="reveal">会社概要</h2>
+          </div>
+          <div class="company-details reveal">
+            <dl class="profile-list">
+              <dt>社名</dt>
+              <dd>株式会社Sample（Sample Inc.）</dd>
+
+              <dt>設立</dt>
+              <dd>2016年4月</dd>
+
+              <dt>代表者</dt>
+              <dd>代表取締役　山田 直人</dd>
+
+              <dt>所在地</dt>
+              <dd>〒150-0002　東京都渋谷区渋谷2丁目○○-○○ Sampleタワー8F</dd>
+
+              <dt>資本金</dt>
+              <dd>4,500万円</dd>
+
+              <dt>従業員数</dt>
+              <dd>312名（うちエンジニア職 287名）</dd>
+
+              <dt>事業内容</dt>
+              <dd>
+                システムエンジニアリングサービス（SES）、受託システム開発、DX推進コンサルティング、ITエンジニア育成・研修事業
+              </dd>
+
+              <dt>主要取引先</dt>
+              <dd>大手SIer、通信キャリア、金融機関、製造業、官公庁 ほか（五十音順・敬称略）</dd>
+            </dl>
+          </div>
         </div>
-        <form class="contact-form">
-          <div class="form-row">
+      </section>
+
+      <section id="contact" class="contact section-padding">
+        <div class="container contact-inner">
+          <div class="section-title-center">
+            <p class="section-sub reveal">CONTACT</p>
+            <h2 class="reveal">お問い合わせ</h2>
+            <p class="section-lead reveal">
+              エンジニアのご依頼、採用に関するご相談など、まずはお気軽にお問い合わせください。
+            </p>
+          </div>
+
+          <form class="contact-form reveal" id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">お名前<span class="req">必須</span></label>
+                <input type="text" id="name" name="name" placeholder="例）山田 太郎" required />
+              </div>
+              <div class="form-group">
+                <label for="email">メールアドレス<span class="req">必須</span></label>
+                <input type="email" id="email" name="email" placeholder="例）example@xxxx.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="company">会社名</label>
+                <input type="text" id="company" name="company" placeholder="例）株式会社サンプル" />
+              </div>
+              <div class="form-group">
+                <label for="category">お問い合わせ種別<span class="req">必須</span></label>
+                <select id="category" name="category" required>
+                  <option value="" disabled selected>選択してください</option>
+                  <option value="ses">エンジニアのご依頼・SESについて</option>
+                  <option value="dev">受託開発・DX支援について</option>
+                  <option value="recruit">採用について</option>
+                  <option value="other">その他</option>
+                </select>
+              </div>
+            </div>
+
             <div class="form-group">
-              <label>お名前</label>
-              <input type="text" placeholder="例）山田 太郎" required />
+              <label for="message">お問い合わせ内容<span class="req">必須</span></label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="ご相談内容、必要な技術領域、稼働時期などわかる範囲でご記入ください"
+                rows="6"
+                required
+              ></textarea>
             </div>
-            <div class="form-group">
-              <label>メールアドレス</label>
-              <input type="email" placeholder="例）example@xxxx.com" required />
+
+            <div class="text-center">
+              <button type="submit" class="btn primary submit-btn">この内容で送信する</button>
+              <p class="form-note" id="form-note" role="status"></p>
             </div>
-          </div>
-          <div class="form-group">
-            <label>ご相談内容</label>
-            <textarea
-              placeholder="イベントの概要、検討時期、ご予算など、わかる範囲でご記入ください"
-              rows="6"
-              required
-            ></textarea>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn primary submit-btn">
-              この内容で送信する
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
+          </form>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
-      <p>&copy; 2026 Sample Company All Rights Reserved.</p>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="#top" class="logo">
+            <img src="images/logo-mark.svg" alt="" class="logo-mark" width="30" height="30" />
+            <span>Sample</span>
+          </a>
+          <p>テクノロジーで、企業の「次の一手」を支えるSES企業。</p>
+        </div>
+
+        <div class="footer-links">
+          <h5>SITEMAP</h5>
+          <a href="#about">ABOUT</a>
+          <a href="#service">SERVICE</a>
+          <a href="#strength">STRENGTH</a>
+          <a href="#flow">FLOW</a>
+        </div>
+        <div class="footer-links">
+          <h5>&nbsp;</h5>
+          <a href="#case">CASE STUDY</a>
+          <a href="#recruit">RECRUIT</a>
+          <a href="#company">COMPANY</a>
+          <a href="#contact">CONTACT</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>&copy; 2026 Sample Inc. All Rights Reserved.</p>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>

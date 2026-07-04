@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#0f2033"/>
+    </linearGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid2" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#22d3ee" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg2)"/>
+  <rect width="800" height="500" fill="url(#grid2)"/>
+  <circle cx="180" cy="380" r="240" fill="url(#glow2)"/>
+  <g transform="translate(260,150)" stroke="#22d3ee" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 100 H60 L80 40 L110 160 L140 70 L165 100 H240" opacity="0.95"/>
+  </g>
+  <g transform="translate(500,90)">
+    <rect x="-22" y="0" width="44" height="14" rx="4" fill="#8b5cf6"/>
+    <rect x="-22" y="26" width="44" height="14" rx="4" fill="#3b82f6"/>
+    <rect x="-5" y="-18" width="14" height="60" rx="4" fill="#22d3ee"/>
+  </g>
+  <text x="60" y="440" font-family="Arial, sans-serif" font-size="22" fill="#9fb0d0" letter-spacing="2">HEALTHCARE DX</text>
+</svg>

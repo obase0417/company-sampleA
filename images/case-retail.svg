@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#161a33"/>
+    </linearGradient>
+    <radialGradient id="glow5" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid5" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#22d3ee" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg5)"/>
+  <rect width="800" height="500" fill="url(#grid5)"/>
+  <circle cx="620" cy="360" r="220" fill="url(#glow5)"/>
+  <g transform="translate(320,110)" fill="none" stroke="#22d3ee" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M0 40 H30 L55 150 H175 L200 60 H60"/>
+    <circle cx="80" cy="185" r="12" fill="#3b82f6" stroke="none"/>
+    <circle cx="160" cy="185" r="12" fill="#8b5cf6" stroke="none"/>
+  </g>
+  <g transform="translate(430,40)" fill="none" stroke="#8b5cf6" stroke-width="3.5">
+    <path d="M0 30 a30 30 0 1 1 60 0 v14 h-60 z"/>
+  </g>
+  <text x="60" y="440" font-family="Arial, sans-serif" font-size="22" fill="#9fb0d0" letter-spacing="2">RETAIL / EC PLATFORM</text>
+</svg>
